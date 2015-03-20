@@ -1,0 +1,47 @@
+extends layout
+
+block pageContent
+	div.header
+		h1 Edit Contact
+	-if(errors)
+		p= message
+		ul
+			each error in errors
+				li= error.msg
+	div.col-sm-8
+		form.form-horizontal(method="post", action="/editcontact/#{user._id}")
+			div.form-group
+				label.col-sm-2 First Name
+				div.col-sm-10
+					input.form-control(type="text", name="fname", value="#{user.name.first}")
+			div.form-group
+				label.col-sm-2 Last Name
+				div.col-sm-10
+					input.form-control(type="text", name="lname", value="#{user.name.last}")
+			div.form-group
+				label.col-sm-2 Title
+				div.col-sm-10
+					input.form-control(type="text", name="title", value="#{user.title}")
+			div.form-group
+				label.col-sm-2 Company
+				div.col-sm-10
+					input.form-control(type="text", name="company", value="#{user.company}")
+			div.form-group
+				label.col-sm-2 Email
+				div.col-sm-10
+					input.form-control(type="text", name="email", value="#{user.email}")
+			div.form-group
+				label.col-sm-2 Where Met
+				div.col-sm-10
+					input.form-control(type="text", name="wheremet", value="#{user.wheremet}")
+			div.form-group
+				label.col-sm-2 Date Met
+				div.col-sm-10
+					input.form-control(type="text", name="datemet", value="#{user.datement}")
+			div.form-group
+				label.col-sm-2 Comments
+				div.col-sm-10
+					textarea.form-control(name="comments", cols="21", rows="5", value="#{user.comments}")
+			div.form-group
+				button.btn.btn-default(type="submit", value="no", name="button") Cancel
+				button.btn.btn-default(type="submit", value="yes", name="button") Save

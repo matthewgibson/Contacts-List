@@ -1,0 +1,36 @@
+extends layout
+
+block pageContent
+	h1 My Contacts
+	p #{title}
+
+	table.table
+		thead
+			tr
+				th Name
+				th Title
+				th Company
+				th Email
+				th Where Met
+				th Date Met
+				th Comments
+				th
+				th
+
+		tbody
+			each user in contactslist
+				tr
+					td #{user.name.first} #{user.name.last}
+					td #{user.title}
+					td #{user.company}
+					td #{user.email}
+					td #{user.wheremet}
+					td #{user.datement}
+					td #{user.comments}
+				
+					td
+						a(href='/edit/#{user._id}')
+							span.glyphicon.glyphicon-pencil(aria-hidden='true')
+					td
+						a(href='/delete/#{user._id}')
+							span.glyphicon.glyphicon-remove(aria-hidden='true')
